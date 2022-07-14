@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Kategori;
 
-class Admin_dashboardController extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class Admin_dashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $data = Kategori::all();
+        // dd($data);
+        return view('admin.kategori.index',compact(['data']));
     }
 
     /**
@@ -24,7 +26,7 @@ class Admin_dashboardController extends Controller
      */
     public function create()
     {
-        return view('admin.tambahPengguna');
+        return view('admin.kategori.tambah_kategori');
     }
 
     /**
@@ -33,9 +35,10 @@ class Admin_dashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Kategori $kategori, Request $request)
     {
-        //
+        $kategori->create(['name' => $request->nama_kategori]);
+        return redirect()->route('kategori.index');
     }
 
     /**

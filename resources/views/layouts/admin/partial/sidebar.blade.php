@@ -18,13 +18,40 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('admin.dashboard')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Master
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('kategori.index')}}">
+                <i class="fa-solid fa-book-bookmark"></i>
+                {{-- <i class="fas fa-abacus"></i> --}}
+                <span>Kategori</span></a>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('barang.index')}}">
+                <i class="fa-solid fa-cubes"></i>
+                <span>Barang</span></a>
+        </li>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fa-solid fa-handshake"></i>
+                <span>Suplier</span></a>
+        </li>
+
+
+
+
+
 
         <!-- Heading -->
         <div class="sidebar-heading">
@@ -42,6 +69,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Data Pengguna:</h6>
+                    <a class="collapse-item" href="{{route('data.pengguna')}}">Semua</a>
                     <a class="collapse-item" href="#">Admin</a>
                     <a class="collapse-item" href="#">Penjual</a>
                     <a class="collapse-item" href="#">Pembeli</a>
@@ -68,9 +96,35 @@
                 </div>
             </div>
         </li>
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Transaksi
+        </div>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Penjualan</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Transaksi Aktif</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Transaksi Baru</span></a>
+        </li>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider">
+        
 
         <!-- Heading -->
         <div class="sidebar-heading">
@@ -93,13 +147,7 @@
                 <span>Manajemen Pembayaran</span></a>
         </li>
 
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Transaksi</span></a>
-        </li>
-
+        
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"

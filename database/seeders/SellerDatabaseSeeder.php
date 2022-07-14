@@ -4,44 +4,42 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\Seller;
 
-class UserDatabaseSeeder extends Seeder
+class SellerDatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-       $user = [
+        $user = [
             [
-            'name' => 'admin',
-            'email' => 'admin@admin',
-            'password' => bcrypt('12345'),
-            'roles' => '1'
-            ],
-
-            [
-            'name' => 'pelapak',
-            'email' => 'pelapak@pelapak',
+            'username' => 'penjual',
+            'email' => 'penjual@penjual',
             'password' => bcrypt('12345'),
             'roles' => '2'
             ],
 
             [
-            'name' => 'customer',
-            'email' => 'customer@customer',
+            'username' => 'pabalu',
+            'email' => 'pabalu@pabalu',
             'password' => bcrypt('12345'),
-            'roles' => '3'
+            'roles' => '2'
+            ],
+
+            [
+            'username' => 'pelapak',
+            'email' => 'pelapak@pelapak',
+            'password' => bcrypt('12345'),
+            'roles' => '2'
             ]
         ];
 
         foreach ($user as $key => $value) {
-            User::create($value);
+            Seller::create($value);
         }
     }
 }

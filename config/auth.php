@@ -17,6 +17,16 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
+    // 'admin' => [
+    //     'guard' => 'admin',
+    //     'driver' => 'eloquent',
+    //     'model' => App\Models\Admin::class,
+    // ],
+    // 'sellers' => [
+    //     'guard' => 'admin',
+    //     'driver' => 'eloquent',
+    //     'model' => App\Models\Seller::class,
+    // ],
 
     /*
     |--------------------------------------------------------------------------
@@ -40,6 +50,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        // 'admin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'admins',
+        // ],
+        // 'seller' => [
+        //     'driver' => 'session',
+        //     'provider' => 'sellers',
+        // ],
+        // 'user' => [
+        //     'driver' => 'session',
+        //     'provider' => 'users',
+        // ],
     ],
 
     /*
@@ -64,6 +86,15 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+
+        // 'admins' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Admin::class,
+        // ],
+        // 'sellers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Seller::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',

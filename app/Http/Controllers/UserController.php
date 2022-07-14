@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class Admin_dashboardController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class Admin_dashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $user = User::all();
+        return view('admin.dataPengguna.index',  compact(['user']));
     }
 
     /**
@@ -24,7 +25,7 @@ class Admin_dashboardController extends Controller
      */
     public function create()
     {
-        return view('admin.tambahPengguna');
+        //
     }
 
     /**

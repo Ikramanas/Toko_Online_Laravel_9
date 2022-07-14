@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Barang;
+// use App\Models\Kategori;
 
-class Admin_dashboardController extends Controller
+class barangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class Admin_dashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $data = Barang::all();
+        $title = 'Barang';
+        return view('admin.barang.index', compact(['data']));
     }
 
     /**
@@ -24,7 +27,8 @@ class Admin_dashboardController extends Controller
      */
     public function create()
     {
-        return view('admin.tambahPengguna');
+        $data = Kategori::all();
+        return view('admin.barang.tambah', compact(['data']));
     }
 
     /**
@@ -35,7 +39,8 @@ class Admin_dashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Barang::create($request->except('token','submit'));
+        return redirect()->route('barang.index')->with('success','berhasil menyimpan data');
     }
 
     /**

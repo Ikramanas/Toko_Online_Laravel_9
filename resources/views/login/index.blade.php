@@ -8,19 +8,9 @@
 
     <title>Login</title>
 
-    @if(session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show">
-            {{session('success')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label></button>
-        </div> 
-    @endif
+   
     
-    @if(session()->has('loginError'))
-        <div class="alert alert-success alert-dismissible fade show">
-            {{session('loginError')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label></button>
-        </div> 
-    @endif
+  
 
         <section class="vh-100" style="background-color: #eee;">
             <div class="container h-100">
@@ -33,6 +23,22 @@
           
                           <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
           
+
+                          @if(session()->has('success'))
+                          <div class="alert alert-success alert-dismissible fade show">
+                            {{session('success')}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label></button>
+                          </div>    
+                          
+                          @endif
+                          
+                          @if(session()->has('error'))
+                          <div class="alert alert-danger alert-dismissible fade show">
+                            {{session('error')}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label></button>
+                          </div> 
+                          @endif
+
                           <form class="mx-1 mx-md-4" action="{{route('authenticate')}}" method="POST">
                             @csrf
                             <div class="d-flex flex-row align-items-center mb-4">

@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Auth;
 
 class isAdmin
 {
@@ -14,11 +16,13 @@ class isAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $roles)
     {
-        if (auth()->check() && auth()->user()->roles == '1') {
-            return $next($request);
+        // dd(Auth()->user()->roles);
+        if (!Auth()->check() && Auth()->user()->roles !== $roles) {
+            abort(403);
         } 
-        abort(code:403);
+
+        return $next($request);
     }
 }

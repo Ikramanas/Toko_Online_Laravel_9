@@ -15,43 +15,29 @@ class loginController extends Controller
 
    public function authenticate(Request $request)
    {
-    // dd($request);
-       $credential = $request->validate([
-         'email'=>['required','email'],
-         'password'=>['required']
-       ]);
-
-       //  dd($user);
-       
-       if (Auth::attempt($credential)) {
+       if (Auth::attempt($request->only('email','password'))) {
          $request->session()->regenerate();
-        
-        // dd(Auth()->user()->roles);
 
-         if (Auth()->user()->roles == '1') {     // menetukan roles apakah pengguna adalah admin?
-          return redirect()->route('admin_dashboard'); //jika benar, arahkan ke admin_dashboar
-        }
-         if (Auth()->user()->roles == '2') {     // menetukan roles apakah pengguna adalah admin?
-          return redirect()->route('seller.index'); //jika benar, arahkan ke admin_dashboar
-        }
+          if (Auth()->user()->roles == '1') {
+            return redirect()->route('admin.dashboard');
+          }
+          elseif (Auth()->user()->roles == '2') {
+            return redirect()->route('seller.dashboard');
+          }
+          elseif (Auth()->user()->roles == '3') {
+            return redirect()->route('user.dashboard');
+          }
+      }
 
-        else {
-          return redirect()->route('dashboard');    //jika bukan maka arahkan pada dashboard biasa
-        }
-
-       }
-        return back()->with('LoginError','Login gagal');
+      return back()->with('error','Login gagal, Email atau Password salah');
    }
 
    public function logout()
 {
-    session()->flush();
-    Auth::logout();
- 
+  session()->flush();
+    Auth()->logout();
     Request()->session()->invalidate();
- 
     Request()->session()->regenerateToken();
- 
-    return redirect('/login');
+    return redirect()->route('login');
 }
 }

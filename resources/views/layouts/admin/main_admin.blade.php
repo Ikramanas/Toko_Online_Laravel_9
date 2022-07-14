@@ -8,8 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Admin|Dashboard</title>
+    <?php $auth = Auth()->user()->roles;
+        if ($auth == '1') {
+            $author='Admin';
+        }elseif ($auth == '2'){
+            $author='Penjual';
+        }else {
+            $author='Customer';
+        }
+    ?>
+    <title>{{$author}}|Dashboard</title>
 
     <!-- Custom fonts for this template-->
     {{-- <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> --}}
@@ -206,8 +214,10 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @yield('admin_profile')
-                                
+                               
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                     {{-- {{Auth::guard('admin')->user()->name;}} --}}
+                                    </span>
                                 <img class="img-profile rounded-circle"
                                     src="admin/img/undraw_profile.svg">
                             </a>
@@ -251,6 +261,20 @@
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
+                    @if(session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show">
+                      {{session('success')}}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label></button>
+                    </div>    
+                    
+                    @endif
+                    
+                    @if(session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show">
+                      {{session('error')}}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label></button>
+                    </div> 
+                    @endif
                     <!-- Content Row -->
                     <div class="row">
 
